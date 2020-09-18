@@ -29,6 +29,9 @@ public class Course extends BaseEntity {
     @Column(name = "SEMESTER_NO")
     private String semesterNo;
 
+    @Column(name = "TYPE")
+    private String type;
+
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     private Set<Enrollment> studentsEnrolled = new HashSet<>();
