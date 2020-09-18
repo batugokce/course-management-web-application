@@ -1,17 +1,15 @@
-package com.bgokce.coursemanagementwebapplication.model;
+package com.bgokce.coursemanagementwebapplication.model.compositekekys;
 
+import com.bgokce.coursemanagementwebapplication.model.Course;
+import com.bgokce.coursemanagementwebapplication.model.Student;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
 @Table

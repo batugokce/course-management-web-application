@@ -1,10 +1,11 @@
-package com.bgokce.coursemanagementwebapplication.model;
+package com.bgokce.coursemanagementwebapplication.model.compositekekys;
 
+import com.bgokce.coursemanagementwebapplication.model.Assistant;
+import com.bgokce.coursemanagementwebapplication.model.Course;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,20 +16,20 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@IdClass(TeachPK.class)
-public class Teach implements Serializable {
+@IdClass(SupportPK.class)
+public class Support implements Serializable {
 
     @Id
     private Long courseId;
 
     @Id
-    private Long instructorId;
+    private Long assistantId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId" , updatable = false, insertable = false, referencedColumnName = "id")
     private Course course;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructorId" , updatable = false, insertable = false, referencedColumnName = "id")
-    private Instructor instructor;
+    @JoinColumn(name = "assistantId" , updatable = false, insertable = false, referencedColumnName = "id")
+    private Assistant assistant;
 }

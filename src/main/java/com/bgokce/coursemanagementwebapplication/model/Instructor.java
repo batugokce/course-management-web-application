@@ -1,5 +1,6 @@
 package com.bgokce.coursemanagementwebapplication.model;
 
+import com.bgokce.coursemanagementwebapplication.model.compositekekys.Teach;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
