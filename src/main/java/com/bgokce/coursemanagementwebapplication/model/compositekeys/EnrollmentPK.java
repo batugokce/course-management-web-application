@@ -1,4 +1,5 @@
-package com.bgokce.coursemanagementwebapplication.model.compositekekys;
+package com.bgokce.coursemanagementwebapplication.model.compositekeys;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,11 +14,13 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SupportPK implements Serializable {
+public class EnrollmentPK implements Serializable {
 
+    //@Column(name = "COURSE_ID")
     private Long courseId;
 
-    private Long assistantId;
+    //@Column(name = "STUDENT_ID")
+    private Long studentId;
 
     public int hashCode() {
         return (int)(courseId + 1);
@@ -25,9 +28,9 @@ public class SupportPK implements Serializable {
 
     public boolean equals(Object object) {
         if (object instanceof EnrollmentPK) {
-            SupportPK otherId = (SupportPK) object;
+            EnrollmentPK otherId = (EnrollmentPK) object;
             return (otherId.courseId == this.courseId)
-                    && (otherId.assistantId.equals(this.assistantId));
+                    && (otherId.studentId.equals(this.studentId));
         }
         return false;
     }

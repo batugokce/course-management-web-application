@@ -1,9 +1,9 @@
 package com.bgokce.coursemanagementwebapplication.model;
 
 import com.bgokce.coursemanagementwebapplication.common.BaseEntity;
-import com.bgokce.coursemanagementwebapplication.model.compositekekys.Enrollment;
-import com.bgokce.coursemanagementwebapplication.model.compositekekys.Support;
-import com.bgokce.coursemanagementwebapplication.model.compositekekys.Teach;
+import com.bgokce.coursemanagementwebapplication.model.compositekeys.Enrollment;
+import com.bgokce.coursemanagementwebapplication.model.compositekeys.Support;
+import com.bgokce.coursemanagementwebapplication.model.compositekeys.Teach;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

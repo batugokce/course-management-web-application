@@ -1,4 +1,4 @@
-package com.bgokce.coursemanagementwebapplication.model.compositekekys;
+package com.bgokce.coursemanagementwebapplication.model.compositekeys;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
