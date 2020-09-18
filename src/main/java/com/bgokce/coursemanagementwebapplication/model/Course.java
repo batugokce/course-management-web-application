@@ -30,4 +30,15 @@ public class Course extends BaseEntity {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     private Set<Enrollment> studentsEnrolled = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+    private Set<Teach> instructorsTeaching = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+    private Set<Support> assistantsSupporting = new HashSet<>();
+
+    @OneToMany(mappedBy = "ownerCourse")
+    private Set<Exam> exams;
 }

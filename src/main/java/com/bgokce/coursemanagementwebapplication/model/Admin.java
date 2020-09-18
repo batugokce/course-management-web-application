@@ -9,6 +9,6 @@ import javax.persistence.SequenceGenerator;
 @Entity
 @Setter
 @Getter
-@SequenceGenerator(name = "idgen", sequenceName = "student_seq")
+@SequenceGenerator(name = "idgen", sequenceName = "admin_seq")
 public class Admin extends PersonEntity {
 }
