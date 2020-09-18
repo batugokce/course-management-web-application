@@ -10,7 +10,5 @@ import javax.persistence.SequenceGenerator;
 @Setter
 @Getter
 @SequenceGenerator(name = "idgen", sequenceName = "student_seq")
-@AllArgsConstructor
-@NoArgsConstructor
 public class Assistant extends PersonEntity {
 }
