@@ -30,11 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/authenticate", "/api/createPerson","/app/**","/greeting/**","/foo/**").permitAll()
-                .antMatchers("/api/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/api/authenticate").permitAll()
                 .anyRequest().authenticated()
-                .and().
-                exceptionHandling().and().sessionManagement()
+                .and()
+                .exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
