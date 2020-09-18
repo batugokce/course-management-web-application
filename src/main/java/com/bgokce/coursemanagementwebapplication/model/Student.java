@@ -17,9 +17,6 @@ import java.util.Set;
 @NoArgsConstructor
 public class Student extends PersonEntity {
 
-    @Column(name = "ROLE_NAME")
-    private String xxx;
-
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
     private Set<Enrollment> coursesTaken = new HashSet<>();
