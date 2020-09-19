@@ -1,5 +1,6 @@
 package com.bgokce.coursemanagementwebapplication.usecases.enrollcourse;
 
+import com.bgokce.coursemanagementwebapplication.common.ResponseMessages;
 import com.bgokce.coursemanagementwebapplication.model.Course;
 import com.bgokce.coursemanagementwebapplication.model.ServiceResponse;
 import com.bgokce.coursemanagementwebapplication.model.Student;
@@ -21,10 +22,14 @@ public class EnrollCourseService {
         Student student = studentRepository.findById(studentId).orElse(null);
         Course course = courseRepository.findById(courseId).orElse(null);
 
+        if (course == null || student == null) {
+            return new ServiceResponse(ResponseMessages.ERROR, ResponseMessages.RECORD_NOT_FOUND, null);
+        }
+
         Enrollment enrollment = new Enrollment(courseId,studentId,course,student);
         student.getCoursesTaken().add(enrollment);
-        studentRepository.save(student);
-        return null;
+        Student returnedStudent = studentRepository.save(student);
+        return new ServiceResponse(ResponseMessages.SUCCESS, ResponseMessages.ENROLLMENT_IS_SUCCESSFUL, returnedStudent);
     }
 
 }
