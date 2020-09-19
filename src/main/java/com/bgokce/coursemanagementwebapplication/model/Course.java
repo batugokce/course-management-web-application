@@ -45,5 +45,5 @@ public class Course extends BaseEntity {
     private Set<Support> assistantsSupporting = new HashSet<>();
 
     @OneToMany(mappedBy = "ownerCourse")
-    private Set<Exam> exams;
+    private Set<Exam> exams = new HashSet<>();
 }

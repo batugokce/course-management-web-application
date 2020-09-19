@@ -14,7 +14,7 @@ public class CreateCourseController {
 
     private final CreateCourseService createCourseService;
 
-    @PostMapping
+    @PostMapping("/createCourse")
     public Course createCourse(@RequestBody Course course) {
         return createCourseService.createCourse(course);
     }
