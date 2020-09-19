@@ -7,6 +7,7 @@ import com.bgokce.coursemanagementwebapplication.model.ServiceResponse;
 import com.bgokce.coursemanagementwebapplication.model.Student;
 import com.bgokce.coursemanagementwebapplication.repository.CourseRepository;
 import com.bgokce.coursemanagementwebapplication.repository.StudentRepository;
+import com.bgokce.coursemanagementwebapplication.usecases.manageenrollment.EnrollmentService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -20,6 +21,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,11 +31,10 @@ class EnrollCourseServiceTest {
     StudentRepository studentRepository;
     @Mock
     CourseRepository courseRepository;
+    @Mock
+    EnrollmentService enrollmentService;
     @InjectMocks
     EnrollCourseService enrollCourseService;
-
-    @Captor
-    ArgumentCaptor<Student> studentArgumentCaptor;
 
     @Test
     void enrollCourseTest() {
@@ -42,13 +43,12 @@ class EnrollCourseServiceTest {
 
         when(courseRepository.findById(anyLong())).thenReturn(Optional.of(course));
         when(studentRepository.findById(anyLong())).thenReturn(Optional.of(student));
-        when(studentRepository.save(studentArgumentCaptor.capture())).thenReturn(student);
 
         ServiceResponse response = enrollCourseService.enrollCourse(1L,1L);
 
         assertEquals(ResponseMessages.SUCCESS, response.getType());
         assertEquals(ResponseMessages.ENROLLMENT_IS_SUCCESSFUL, response.getMessage());
-        assertEquals(1,studentArgumentCaptor.getValue().getCoursesTaken().size());
+        verify(enrollmentService).createEnrollment(course,student);
     }
 
     @Test
