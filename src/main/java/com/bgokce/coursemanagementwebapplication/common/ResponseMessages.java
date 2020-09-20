@@ -10,4 +10,8 @@ public class ResponseMessages {
     public static String RECORD_NOT_FOUND = "Kayıt bulunamadı.";
 
     public static String ENROLLMENT_IS_SUCCESSFUL = "Derse başarıyla kayıt olundu.";
+
+    public static String EXAM_CREATED_SUCCESSFULLY = "Sınav başarıyla oluşturuldu.";
+
+    public static String EXAM_DELETED_SUCCESSFULLY = "Sınav başarıyla silindi.";
 }
