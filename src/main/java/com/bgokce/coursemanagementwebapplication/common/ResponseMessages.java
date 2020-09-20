@@ -14,4 +14,8 @@ public class ResponseMessages {
     public static String EXAM_CREATED_SUCCESSFULLY = "Sınav başarıyla oluşturuldu.";
 
     public static String EXAM_DELETED_SUCCESSFULLY = "Sınav başarıyla silindi.";
+
+    public static String RECORD_FOUND = "Kayıt bulundu.";
+
+    public static String RECORD_DELETED = "Kayıt başarıyla silindi.";
 }

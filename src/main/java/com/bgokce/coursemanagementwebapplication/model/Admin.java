@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.SequenceGenerator;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Setter
 @Getter

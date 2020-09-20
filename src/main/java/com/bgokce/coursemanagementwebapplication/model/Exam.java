@@ -1,18 +1,15 @@
 package com.bgokce.coursemanagementwebapplication.model;
 
 import com.bgokce.coursemanagementwebapplication.common.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import liquibase.pro.packaged.S;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Setter
 @Getter
@@ -24,7 +21,8 @@ public class Exam extends BaseEntity {
 
     private String location;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COURSE")
     private Course ownerCourse;
 }
