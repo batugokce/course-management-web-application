@@ -18,7 +18,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @IdClass(EnrollmentPK.class)
-@EntityListeners(AuditingEntityListener.class)
 public class Enrollment implements Serializable {
 
     @Id

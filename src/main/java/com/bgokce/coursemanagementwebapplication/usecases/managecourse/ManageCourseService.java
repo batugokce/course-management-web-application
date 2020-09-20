@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -21,7 +23,7 @@ public class ManageCourseService {
     }
 
     public ServiceResponse getCourse(Long courseId) {
-        Course course = courseRepository.findById(courseId).orElse(null);
+        Course course = courseRepository.getCourseWithExams(courseId);
         if (course == null) {
             return new ServiceResponse(ResponseMessages.ERROR, ResponseMessages.RECORD_NOT_FOUND, null);
         }

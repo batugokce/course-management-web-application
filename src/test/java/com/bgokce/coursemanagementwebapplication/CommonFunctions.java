@@ -1,7 +1,10 @@
 package com.bgokce.coursemanagementwebapplication;
 
 import com.bgokce.coursemanagementwebapplication.model.Course;
+import com.bgokce.coursemanagementwebapplication.model.Exam;
 import com.bgokce.coursemanagementwebapplication.model.Student;
+
+import java.time.LocalDateTime;
 
 public class CommonFunctions {
 
@@ -22,5 +25,13 @@ public class CommonFunctions {
         student.setNameSurname("name surname");
         student.setId(1L);
         return student;
+    }
+
+    public static Exam createExam() {
+        Exam exam = new Exam();
+        exam.setLocation("bmb1, bmb2");
+        exam.setStartDate(LocalDateTime.now().plusDays(3));
+        exam.setType("final");
+        return exam;
     }
 }

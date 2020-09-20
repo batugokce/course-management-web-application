@@ -13,7 +13,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
+
 @Entity
 @Setter
 @Getter
@@ -44,6 +44,6 @@ public class Course extends BaseEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     private Set<Support> assistantsSupporting = new HashSet<>();
 
-    @OneToMany(mappedBy = "ownerCourse")
+    @OneToMany(mappedBy = "ownerCourse", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Set<Exam> exams = new HashSet<>();
 }
