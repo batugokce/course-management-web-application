@@ -1,8 +1,6 @@
 package com.bgokce.coursemanagementwebapplication;
 
-import com.bgokce.coursemanagementwebapplication.model.Course;
-import com.bgokce.coursemanagementwebapplication.model.Exam;
-import com.bgokce.coursemanagementwebapplication.model.Student;
+import com.bgokce.coursemanagementwebapplication.model.*;
 
 import java.time.LocalDateTime;
 
@@ -25,6 +23,24 @@ public class CommonFunctions {
         student.setNameSurname("name surname");
         student.setId(1L);
         return student;
+    }
+
+    public static Instructor createInstructor(){
+        Instructor instructor = new Instructor();
+        instructor.setUsername("username");
+        instructor.setPassword("password");
+        instructor.setNameSurname("name surname");
+        instructor.setId(1L);
+        return instructor;
+    }
+
+    public static Assistant createAssistant(){
+        Assistant assistant = new Assistant();
+        assistant.setUsername("username");
+        assistant.setPassword("password");
+        assistant.setNameSurname("name surname");
+        assistant.setId(1L);
+        return assistant;
     }
 
     public static Exam createExam() {
