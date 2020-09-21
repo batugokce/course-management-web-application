@@ -1,4 +1,4 @@
-package com.bgokce.coursemanagementwebapplication.usecases.enrollcourse;
+package com.bgokce.coursemanagementwebapplication.usecases.addpeopletocourse;
 
 import com.bgokce.coursemanagementwebapplication.model.ServiceResponse;
 import lombok.RequiredArgsConstructor;
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
-public class EnrollCourseController {
+public class AddPeopleController {
 
-    private final EnrollCourseService enrollCourseService;
+    private final AddPeopleService addPeopleService;
 
     @PostMapping("/enroll/{courseId}/{studentId}")
     public ResponseEntity<ServiceResponse> enrollCourse(@PathVariable Long courseId, @PathVariable Long studentId) {
-        return ResponseEntity.ok().body(enrollCourseService.enrollCourse(courseId,studentId));
+        return ResponseEntity.ok().body(addPeopleService.enrollCourse(courseId,studentId));
     }
 }
