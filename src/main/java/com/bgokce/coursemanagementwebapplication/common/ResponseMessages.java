@@ -18,4 +18,8 @@ public class ResponseMessages {
     public static String RECORD_FOUND = "Kayıt bulundu.";
 
     public static String RECORD_DELETED = "Kayıt başarıyla silindi.";
+
+    public static String INSTRUCTOR_ADDED_SUCCESSULLY = "Öğretmen derse başarıyla eklendi.";
+
+    public static String ASSISTANT_ADDED_SUCCESSULLY = "Asistan derse başarıyla eklendi.";
 }
