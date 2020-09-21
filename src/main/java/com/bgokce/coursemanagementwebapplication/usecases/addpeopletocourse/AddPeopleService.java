@@ -2,9 +2,7 @@ package com.bgokce.coursemanagementwebapplication.usecases.addpeopletocourse;
 
 import com.bgokce.coursemanagementwebapplication.common.ResponseMessages;
 import com.bgokce.coursemanagementwebapplication.model.*;
-import com.bgokce.coursemanagementwebapplication.model.compositekeys.Enrollment;
-import com.bgokce.coursemanagementwebapplication.model.compositekeys.Support;
-import com.bgokce.coursemanagementwebapplication.model.compositekeys.Teach;
+import com.bgokce.coursemanagementwebapplication.model.compositekeys.*;
 import com.bgokce.coursemanagementwebapplication.repository.*;
 import liquibase.pro.packaged.S;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +28,13 @@ public class AddPeopleService {
             return new ServiceResponse(ResponseMessages.ERROR, ResponseMessages.RECORD_NOT_FOUND, null);
         }
 
+        boolean isEnrolledBefore = enrollmentRepository.existsById(new EnrollmentPK(courseId,studentId));
+        if (isEnrolledBefore) {
+            return new ServiceResponse(ResponseMessages.WARNING, ResponseMessages.ENROLLMENT_EXISTS_ALREADY, null);
+        }
+
         Enrollment enrollment = new Enrollment(courseId,studentId,course,student);
         enrollmentRepository.save(enrollment);
-
         return new ServiceResponse(ResponseMessages.SUCCESS, ResponseMessages.ENROLLMENT_IS_SUCCESSFUL, student);
     }
 
@@ -44,9 +46,13 @@ public class AddPeopleService {
             return new ServiceResponse(ResponseMessages.ERROR, ResponseMessages.RECORD_NOT_FOUND, null);
         }
 
+        boolean isAddedBefore = teachRepository.existsById(new TeachPK(courseId,instructorId));
+        if (isAddedBefore) {
+            return new ServiceResponse(ResponseMessages.WARNING, ResponseMessages.INSTRUCTOR_EXISTS_ALREADY, null);
+        }
+
         Teach teach = new Teach(courseId, instructorId, course, instructor);
         teachRepository.save(teach);
-
         return new ServiceResponse(ResponseMessages.SUCCESS, ResponseMessages.INSTRUCTOR_ADDED_SUCCESSULLY, instructor);
     }
 
@@ -58,9 +64,13 @@ public class AddPeopleService {
             return new ServiceResponse(ResponseMessages.ERROR, ResponseMessages.RECORD_NOT_FOUND, null);
         }
 
+        boolean isAddedBefore = supportRepository.existsById(new SupportPK(courseId,assistantId));
+        if (isAddedBefore) {
+            return new ServiceResponse(ResponseMessages.WARNING, ResponseMessages.ASSISTANT_EXISTS_ALREADY, null);
+        }
+
         Support support = new Support(courseId, assistantId, course, assistant);
         supportRepository.save(support);
-
         return new ServiceResponse(ResponseMessages.SUCCESS, ResponseMessages.ASSISTANT_ADDED_SUCCESSULLY, assistant);
     }
 }
