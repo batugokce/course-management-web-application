@@ -5,6 +5,8 @@ public class ResponseMessages {
 
     public static String ERROR = "error";
 
+    public static String WARNING = "warn";
+
     public static String ACCOUNT_CREATED_SUCCESSFULLY = "Hesap başarıyla oluşturuldu.";
 
     public static String RECORD_NOT_FOUND = "Kayıt bulunamadı.";
@@ -18,4 +20,14 @@ public class ResponseMessages {
     public static String RECORD_FOUND = "Kayıt bulundu.";
 
     public static String RECORD_DELETED = "Kayıt başarıyla silindi.";
+
+    public static String INSTRUCTOR_ADDED_SUCCESSULLY = "Öğretmen derse başarıyla eklendi.";
+
+    public static String ASSISTANT_ADDED_SUCCESSULLY = "Asistan derse başarıyla eklendi.";
+
+    public static String ENROLLMENT_EXISTS_ALREADY = "Derse daha önce kaydolmuşsunuz.";
+
+    public static String INSTRUCTOR_EXISTS_ALREADY = "Öğretmen bu derse zaten kayıtlı.";
+
+    public static String ASSISTANT_EXISTS_ALREADY = "Asistan bu derse zaten kayıtlı.";
 }
