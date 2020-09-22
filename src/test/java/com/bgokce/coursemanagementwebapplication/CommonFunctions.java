@@ -50,4 +50,13 @@ public class CommonFunctions {
         exam.setType("final");
         return exam;
     }
+
+    public static Announcement createAnnouncement(){
+        Announcement announcement = new Announcement();
+        announcement.setTitle("test başlığı");
+        announcement.setText("test içeriği");
+        announcement.setCreated(LocalDateTime.now());
+        announcement.setId(1L);
+        return announcement;
+    }
 }
