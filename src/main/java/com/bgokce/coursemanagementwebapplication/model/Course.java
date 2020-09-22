@@ -46,4 +46,7 @@ public class Course extends BaseEntity {
 
     @OneToMany(mappedBy = "ownerCourse", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Set<Exam> exams = new HashSet<>();
+
+    @OneToMany(mappedBy = "ownerCourse", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private Set<Exam> announcements = new HashSet<>();
 }
