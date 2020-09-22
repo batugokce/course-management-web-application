@@ -30,4 +30,6 @@ public class ResponseMessages {
     public static String INSTRUCTOR_EXISTS_ALREADY = "Öğretmen bu derse zaten kayıtlı.";
 
     public static String ASSISTANT_EXISTS_ALREADY = "Asistan bu derse zaten kayıtlı.";
+
+    public static String ANNOUNCEMENT_CREATED_SUCCESSFULLY = "Duyuru başarıyla eklendi.";
 }
