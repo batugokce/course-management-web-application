@@ -1,6 +1,8 @@
 package com.bgokce.coursemanagementwebapplication;
 
 import com.bgokce.coursemanagementwebapplication.model.*;
+import com.bgokce.coursemanagementwebapplication.model.DTO.GradeDTO;
+import com.bgokce.coursemanagementwebapplication.model.compositekeys.Grade;
 
 import java.time.LocalDateTime;
 
@@ -58,5 +60,16 @@ public class CommonFunctions {
         announcement.setCreated(LocalDateTime.now());
         announcement.setId(1L);
         return announcement;
+    }
+
+    public static Grade createGrade(Long studentId, Integer point) {
+        Grade grade = new Grade();
+        grade.setPoint(point);
+        grade.setStudentId(studentId);
+        return grade;
+    }
+
+    public static GradeDTO createGradeDTO(Long studentId, Integer point) {
+        return new GradeDTO(studentId, point);
     }
 }

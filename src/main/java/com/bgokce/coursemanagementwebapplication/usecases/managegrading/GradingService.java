@@ -33,7 +33,7 @@ public class GradingService {
 
     public ServiceResponse addGradesAsList(List<GradeDTO> gradeDTOList, Long examId) {
         ServiceResponse response = checkParameters(gradeDTOList, examId);
-        if (response.getType().equals(ResponseMessages.ERROR)) {
+        if (response.getType().equals(ResponseMessages.WARNING) || response.getType().equals(ResponseMessages.ERROR)) {
             return response;
         }
         Exam exam = (Exam) response.getBody();
