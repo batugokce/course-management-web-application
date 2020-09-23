@@ -32,4 +32,10 @@ public class ResponseMessages {
     public static String ASSISTANT_EXISTS_ALREADY = "Asistan bu derse zaten kayıtlı.";
 
     public static String ANNOUNCEMENT_CREATED_SUCCESSFULLY = "Duyuru başarıyla eklendi.";
+
+    public static String GRADES_ADDED_SUCCESSFULY = "Notlar başarıyla eklendi.";
+
+    public static String GRADE_LIST_IS_NULL = "Eklenicek not belirtilmemiş.";
+
+    public static String SOME_STUDENT_RECORDS_NOT_FOUND = "Bazı öğrenci kayıtları bulunamadı.";
 }
