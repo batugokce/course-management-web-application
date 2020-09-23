@@ -38,4 +38,6 @@ public class ResponseMessages {
     public static String GRADE_LIST_IS_NULL = "Eklenicek not belirtilmemiş.";
 
     public static String SOME_STUDENT_RECORDS_NOT_FOUND = "Bazı öğrenci kayıtları bulunamadı.";
+
+    public static String STUDENT_NOT_ENROLLED_THE_COURSE = "Bazı öğrenciler bu derse kayıtlı değil.";
 }
