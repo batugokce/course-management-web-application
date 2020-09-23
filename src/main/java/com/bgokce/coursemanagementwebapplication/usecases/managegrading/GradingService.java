@@ -6,6 +6,7 @@ import com.bgokce.coursemanagementwebapplication.model.Exam;
 import com.bgokce.coursemanagementwebapplication.model.ServiceResponse;
 import com.bgokce.coursemanagementwebapplication.model.Student;
 import com.bgokce.coursemanagementwebapplication.model.compositekeys.Grade;
+import com.bgokce.coursemanagementwebapplication.repository.EnrollmentRepository;
 import com.bgokce.coursemanagementwebapplication.repository.ExamRepository;
 import com.bgokce.coursemanagementwebapplication.repository.GradeRepository;
 import com.bgokce.coursemanagementwebapplication.repository.StudentRepository;
@@ -27,6 +28,7 @@ public class GradingService {
     private final GradeRepository gradeRepository;
     private final ExamRepository examRepository;
     private final StudentRepository studentRepository;
+    private final EnrollmentRepository enrollmentRepository;
 
     public ServiceResponse addGradesAsList(List<GradeDTO> gradeDTOList, Long examId) {
         if (gradeDTOList.size() == 0) {
@@ -40,6 +42,11 @@ public class GradingService {
         }
 
         List<Long> ids = gradeDTOList.stream().map(GradeDTO::getStudentId).collect(Collectors.toList());
+        Integer numberCheck = enrollmentRepository.countStudentsEnroller(exam.getOwnerCourse().getId(),ids);
+
+        if (numberCheck != ids.size()){
+            return new ServiceResponse(ResponseMessages.ERROR, ResponseMessages.STUDENT_NOT_ENROLLED_THE_COURSE, null);
+        }
 
         List<Student> studentList = studentRepository.findAllById(ids);
 
@@ -48,7 +55,6 @@ public class GradingService {
         }
 
         Map<Long, Student> map =  prepareStudentMap(studentList);
-
         List<Grade> grades = gradeDTOList
                 .stream()
                 .map(item -> new Grade(examId,item.getStudentId(),exam,map.get(item.getStudentId()),item.getPoint()))
@@ -61,7 +67,7 @@ public class GradingService {
 
     public Map<Long, Student> prepareStudentMap(List<Student> studentList) {
         Map<Long , Student> map = new HashMap<>();
-        studentList.stream().forEach(item -> map.put(item.getId(),item));
+        studentList.forEach(item -> map.put(item.getId(),item));
         return map;
     }
 
