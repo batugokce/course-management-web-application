@@ -10,9 +10,9 @@ function App() {
         <Route path='/home' exact component={Home} />
         <Route path='/index' component={IndexPage} />
         <Route path='/last' component={Home} />
-        <Redirect to='/home' />
+
       </div>
   );
 }
-
+//<Redirect to='/home' />
 export default App;

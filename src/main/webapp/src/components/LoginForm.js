@@ -17,6 +17,7 @@ function LoginForm() {
 
     let userLogin = (event,username, password) => {
         event.preventDefault();
+        setShow(false);
         console.log(username, password);
 
         axios.post("/api/authenticate",{
