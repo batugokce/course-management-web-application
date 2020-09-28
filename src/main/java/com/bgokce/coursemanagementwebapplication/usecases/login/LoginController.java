@@ -3,6 +3,7 @@ package com.bgokce.coursemanagementwebapplication.usecases.login;
 import com.bgokce.coursemanagementwebapplication.configuration.MyUserDetailsService;
 import com.bgokce.coursemanagementwebapplication.model.Authority;
 import com.bgokce.coursemanagementwebapplication.model.DTO.LoginDTO;
+import com.bgokce.coursemanagementwebapplication.model.DTO.LoginResponseDTO;
 import com.bgokce.coursemanagementwebapplication.model.PersonEntity;
 import com.bgokce.coursemanagementwebapplication.utilities.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +43,10 @@ public class LoginController {
 
         final String jwt = jwtUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok().body(jwt);
+        String type = ((Authority) userDetails.getAuthorities().toArray()[0]).getAuthority();
+        LoginResponseDTO response = new LoginResponseDTO(jwt,type);
+
+        return ResponseEntity.ok().body(response);
 
     }
 }

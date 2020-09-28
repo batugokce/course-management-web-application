@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { useHistory } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
@@ -12,6 +13,7 @@ function LoginForm() {
     const [password, setPassword] = useState("");
     const [alertText, setAlertText] = useState("");
     const [show, setShow] = useState(false);
+    const history = useHistory();
 
     let userLogin = (event,username, password) => {
         event.preventDefault();
@@ -22,7 +24,10 @@ function LoginForm() {
             password: password
         })
             .then(response => {
-                console.log(response)
+                console.log(response.data)
+                localStorage.setItem("jwt", response.data.jwt)
+                localStorage.setItem("type", response.data.type)
+                history.push("/index")
             })
             .catch(error => {
                 let statusCode = error.response.status
@@ -64,7 +69,6 @@ function LoginForm() {
                         <Button className="ml-3" variant="primary" type="submit" onClick = {event => userLogin(event,username,password)}  >
                             Giriş yap
                         </Button>
-
                     </Row>
 
                 </Form>
