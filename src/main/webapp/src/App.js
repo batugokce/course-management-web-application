@@ -1,7 +1,9 @@
 import React from 'react';
-import {Redirect, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Home from "./pages/Home";
 import IndexPage from "./pages/IndexPage";
+import CoursePage from "./pages/CoursePage";
+import CourseDetailPage from "./pages/CourseDetailPage";
 
 
 function App() {
@@ -9,7 +11,10 @@ function App() {
       <div className="App-intro">
         <Route path='/home' exact component={Home} />
         <Route path='/index' component={IndexPage} />
-        <Route path='/last' component={Home} />
+        <Route path='/courses' component={CoursePage} />
+        <Route path='/course/:id' render={(props) => {
+              return ( <CourseDetailPage {...props } /> )
+          }} />
 
       </div>
   );
