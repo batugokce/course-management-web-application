@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -37,5 +38,10 @@ public class ManageCourseService {
         }
         courseRepository.delete(course);
         return new ServiceResponse(ResponseMessages.SUCCESS, ResponseMessages.RECORD_DELETED, null);
+    }
+
+    public ServiceResponse getCoursesForStudent(Long studentId) {
+        Set<Course> courses = courseRepository.getAllCourses();
+        return new ServiceResponse(ResponseMessages.SUCCESS, ResponseMessages.RECORD_FOUND, courses);
     }
 }
