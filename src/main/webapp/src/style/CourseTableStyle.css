@@ -1,0 +1,13 @@
+.gray {
+    color: #343a40;
+}
+
+
+.link-white {
+    color: #ffffff;
+}
+
+.link-white:hover {
+    color: #e0e0e0;
+    text-decoration: none;
+}
