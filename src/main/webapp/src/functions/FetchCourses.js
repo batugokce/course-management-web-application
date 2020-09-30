@@ -12,7 +12,7 @@ function FetchCourses(props) {
     }
 
     useEffect(() => {
-        if (courses == null) {
+        if (courses == null || courses.length === 0) {
             console.log("Course list is being fetched.")
             axios.get("/api/v1/course/list/1", header)
                 .then(response => {
