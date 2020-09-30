@@ -1,0 +1,163 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.0.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+    <changeSet author="Batuhan (generated)" id="1601489619344-1">
+        <createTable tableName="announcement">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="announcement_pkey"/>
+            </column>
+            <column name="created" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="text" type="TEXT"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="course" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-2">
+        <createTable tableName="authority">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authority_pkey"/>
+            </column>
+            <column name="created" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="authority" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-3">
+        <createTable tableName="course">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="course_pkey"/>
+            </column>
+            <column name="created" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="course_code" type="VARCHAR(255)"/>
+            <column name="course_name" type="VARCHAR(255)"/>
+            <column name="semester_no" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-4">
+        <createTable tableName="enrollment">
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="enrollment_pkey"/>
+            </column>
+            <column name="student_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="enrollment_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-5">
+        <createTable tableName="exam">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="exam_pkey"/>
+            </column>
+            <column name="created" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="location" type="VARCHAR(255)"/>
+            <column name="start_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="course" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-6">
+        <createTable tableName="person_entity">
+            <column name="dtype" type="VARCHAR(31)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="person_entity_pkey"/>
+            </column>
+            <column name="created" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="name_surname" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="username" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-7">
+        <createTable tableName="teach">
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="teach_pkey"/>
+            </column>
+            <column name="instructor_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="teach_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-8">
+        <createTable tableName="grade">
+            <column name="exam_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="grade_pkey"/>
+            </column>
+            <column name="student_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="grade_pkey"/>
+            </column>
+            <column name="point" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-9">
+        <createTable tableName="person_authorities">
+            <column name="person_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="person_authorities_pkey"/>
+            </column>
+            <column name="authority_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="person_authorities_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-10">
+        <createTable tableName="support">
+            <column name="assistant_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="support_pkey"/>
+            </column>
+            <column name="course_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="support_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-11">
+        <addForeignKeyConstraint baseColumnNames="authority_id" baseTableName="person_authorities" constraintName="fkt6ynxpt1unhq4kx5c25fyfu49" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="authority" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-12">
+        <addForeignKeyConstraint baseColumnNames="course" baseTableName="announcement" constraintName="fk58nmvi7lw4gkj4a9yusij1n7c" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-13">
+        <addForeignKeyConstraint baseColumnNames="course" baseTableName="exam" constraintName="fk693wlxyfoaoi5egw05lxh6d8y" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-14">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="enrollment" constraintName="fkbhhcqkw1px6yljqg92m0sh2gt" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-15">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="teach" constraintName="fkjig5kvvgda4mwo3ocylvy4uu7" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-16">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="support" constraintName="fkqeka5r0be16y5lg20ljst9lyq" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="course" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-17">
+        <addForeignKeyConstraint baseColumnNames="exam_id" baseTableName="grade" constraintName="fkgg0to963klay7cw6mc40kw78v" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="exam" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-18">
+        <addForeignKeyConstraint baseColumnNames="instructor_id" baseTableName="teach" constraintName="fkd0sjvvtt2cl0t7gfkil9v6soa" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-19">
+        <addForeignKeyConstraint baseColumnNames="student_id" baseTableName="grade" constraintName="fkjo341e5cdtaurdii1o19boxbx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-20">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="person_authorities" constraintName="fkicqtspge9bc9oqbjmwerd1hog" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-21">
+        <addForeignKeyConstraint baseColumnNames="assistant_id" baseTableName="support" constraintName="fklyfu72kyk3s5d1dnpi307xvqx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-22">
+        <addForeignKeyConstraint baseColumnNames="student_id" baseTableName="enrollment" constraintName="fkdyf98pdams2sggehg02fknuip" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-23">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="ann_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-24">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="auth_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-25">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="course_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-26">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="exam_seq" startValue="1"/>
+    </changeSet>
+    <changeSet author="Batuhan (generated)" id="1601489619344-27">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="50" maxValue="9223372036854775807" minValue="1" sequenceName="person_seq" startValue="1"/>
+    </changeSet>
+</databaseChangeLog>
