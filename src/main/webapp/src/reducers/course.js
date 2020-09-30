@@ -1,6 +1,6 @@
 import {  STORE_COURSES } from './actions/types'
 
-const initialState = { allCourses: null}
+const initialState = { allCourses: []}
 
 export default function(state = initialState, action) {
     switch (action.type) {

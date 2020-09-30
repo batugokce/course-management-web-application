@@ -2,16 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../reducers/actions'
 import FetchCourses from "../functions/FetchCourses";
+import NavBar from "../components/NavBar";
+import Sidebar from "../components/Sidebar";
+import CourseDetails from "../components/CourseDetails";
 
 function CourseDetailPage(props) {
-    const { match, courses } = props
+    const { match } = props
     let courseId = match.params.id;
 
     return (
         <div>
+            <NavBar />
+            <Sidebar />
             <FetchCourses/>
-            a {courseId}
-            <button onClick={() => {console.log(courses)}} >  buton</button>
+            <CourseDetails courseId={courseId} />
         </div>
     )
 }
